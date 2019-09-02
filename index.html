@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            let i = 0;
+            function computerPlay() {
+                let randomValue = Math.floor(Math.random()*3);
+                let wordSpell;
+                switch(randomValue) {
+                    case 0:
+                    wordSpell = "Rock";
+                    break;
+                    case 1:
+                    wordSpell = "Paper";
+                    break;
+                    case 2:
+                    wordSpell = "Scissors";
+                    break;
+                }
+                return wordSpell;
+            }
+
+            function singleRoundPlay(playerSelection, computerSelection) {
+                let winOrLose;
+                playerSelection = playerSelection.toLowerCase();
+                computerSelection = computerSelection.toLowerCase();
+                if(playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
+                    winOrLose = "You win! " + playerSelection + " beats " + computerSelection;
+                    i++;
+                } else if(playerSelection == computerSelection) {
+                    winOrLose = "Tie";
+                } else {
+                    winOrLose = "You lose! " + computerSelection + " beats " + playerSelection;
+                }
+                console.log(winOrLose);
+                return winOrLose;
+            }
+
+            function game() {
+                singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
+                singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
+                singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
+                singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
+                singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
+                if(i >= 3) {
+                    console.log("YOU ARE THE WINNER!");
+                } else {
+                    console.log("YOU LOST! CONGRATULATIONS");
+                }
+            }
+
+        </script>
+    </body>
+</html>
