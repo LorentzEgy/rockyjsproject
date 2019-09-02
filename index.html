@@ -29,11 +29,12 @@
                 computerSelection = computerSelection.toLowerCase();
                 if(playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
                     winOrLose = "You win! " + playerSelection + " beats " + computerSelection;
-                    i++;
+                    ++i;
                 } else if(playerSelection == computerSelection) {
                     winOrLose = "Tie";
                 } else {
                     winOrLose = "You lose! " + computerSelection + " beats " + playerSelection;
+                    --i;
                 }
                 console.log(winOrLose);
                 return winOrLose;
@@ -45,10 +46,12 @@
                 singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
                 singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
                 singleRoundPlay(prompt("Rock Paper Scissors"), computerPlay());
-                if(i >= 3) {
+                if(i >= 1) {
                     console.log("YOU ARE THE WINNER!");
-                } else {
+                } else if(i < 0) {
                     console.log("YOU LOST! CONGRATULATIONS");
+                } else {
+                    console.log("TIE!");
                 }
             }
 
